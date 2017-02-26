@@ -33,14 +33,26 @@
                             listWeek: { buttonText: 'list week' }
                         },
 
-                        defaultView: 'listDay',
+                        defaultView: 'month',
                         navLinks: true, // can click day/week names to navigate views
                         editable: true,
                         eventLimit: true, // allow "more" link when too many events
                         events: '/home/fetchevents',
-                        eventClick: RenderEvent
+                        eventClick: RenderEvent,
+                        navLinkDayClick: function (date) {
+                            var dateNow = new Date();
+                            var theDate = new Date(date.year(), date.month(), date.date(), dateNow.getHours(), dateNow.getMinutes(), 0, 0);
+                            var endDate = theDate.addHours(1);
+                            $('#event_start').val(dateFormat(theDate, 'yyyy-mm-dd HH:MM:ss'));
+                            $('#event_end').val(dateFormat(endDate, 'yyyy-mm-dd HH:MM:ss'));
+                        }
                     });
             });
+
+        Date.prototype.addHours = function (h) {
+            this.setTime(this.getTime() + (h * 60 * 60 * 1000));
+            return this;
+        }
 
     </script>
 
