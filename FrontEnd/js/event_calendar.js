@@ -6,7 +6,6 @@
     $('#event_end').val(dateFormat(calEvent.end, 'yyyy-mm-dd HH:MM:ss'));
     $('#event_title').val(calEvent.title);
     $('#tr_delete').toggle(true);
-    $('#event_delete').attr('href', '/home/delete?id=' + calEvent.id);
     $('#tr_savenew').toggle(false);
     $('#event_validation').toggle(false);
 }
