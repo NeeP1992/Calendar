@@ -48,15 +48,40 @@
         body {
             margin: 40px 10px;
             padding: 0;
-            font-family: "Lucida Grande", Helvetica, Arial, Verdana, sans-serif;
+           font-family: Arial, Helvetica, sans-serif;
             font-size: 14px;
         }
 
-        #calendar {
+        #calendar, #eventDetail {
             max-width: 900px;
             margin: 0 auto;
         }
 
+        #eventDetail table {
+            border: 1px #ddd solid;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #eventDetail td, #eventDetail th {
+            border: 1px #ddd solid;
+            padding: 15px;
+        }
+
+        input[type=text] {
+            border: 1px #ddd solid;
+        }
+
+        #event_title {
+            width: 100%;
+            height: 125px;
+        }
+
+        #event_validation {
+            padding-bottom: 15px;
+            font-size: 1.1em;
+            font-weight: bold;
+        }
         .success { color: green; }
 
         .error { color: red; }
@@ -75,33 +100,31 @@
     <table>
         <tr style="display: none;" id="tr_id">
             <td>Id</td>
-            <td id="event_id"></td>
+            <td id="event_id" colspan="3"></td>
         </tr>
         <tr>
             <td>Start</td>
             <td>
-                <input id="event_start" name="start" value="@DateTime.Now.AddMinutes(15).ToString("yyyy-MM-dd HH:mm:00")"/>
+                <input id="event_start" value="@DateTime.Now.AddMinutes(15).ToString("yyyy-MM-dd HH:mm:00")"/>
             </td>
-        </tr>
-        <tr>
             <td>End</td>
             <td>
-                <input id="event_end" name="end" value="@DateTime.Now.AddMinutes(75).ToString("yyyy-MM-dd HH:mm:00")"/>
+                <input id="event_end" value="@DateTime.Now.AddMinutes(75).ToString("yyyy-MM-dd HH:mm:00")"/>
             </td>
         </tr>
         <tr>
             <td>Description</td>
-            <td>
-                <input id="event_title" name="title" value="@(Model == null ? string.Empty : Model.title)"/>
+            <td colspan="3">
+                <textarea id="event_title">@(Model == null ? string.Empty : Model.title)</textarea>
             </td>
         </tr>
         <tr id="tr_delete" style="display: none;">
-            <td>
+            <td colspan="4">
                 <input type="button" id="event_delete" onclick="DeleteEvent();" value="Delete Event"/>
             </td>
         </tr>
         <tr id="tr_savenew">
-            <td colspan="2">
+            <td colspan="4">
                 <input type="button" onclick="CreateEvent()" value="Save New Event"/>
             </td>
         </tr>
