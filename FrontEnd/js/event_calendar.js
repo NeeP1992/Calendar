@@ -38,7 +38,7 @@ function CreateEvent() {
             $('#event_validation').toggle(true);
         },
         dataType: 'json',
-        contentType: "application/json; charset=utf-8",
+        contentType: "application/json; charset=utf-8"
     });
 }
 
