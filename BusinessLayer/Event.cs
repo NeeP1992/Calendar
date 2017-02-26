@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using BusinessLayer.Data;
@@ -14,7 +15,6 @@ namespace BusinessLayer
         public string Text { get; set; }
         public DateTime EventStart { get; set; }
         public DateTime EventEnd { get; set; }
-
 
         public Event(string text, DateTime eventStart, DateTime eventEnd)
         {
@@ -45,11 +45,11 @@ namespace BusinessLayer
             return dt?.Rows.Count > 0 ? new Event(dt.Rows[0]) : null;
         }
 
-        public static List<Event> FetchEvents(bool outstandingOnly = true)
+        public static List<Event> FetchEvents()
         {
             List<Event> events = new List<Event>();
 
-            foreach (DataRow r in StoredProcedures.EventList(outstandingOnly).Rows)
+            foreach (DataRow r in StoredProcedures.EventList().Rows)
                 events.Add(new Event(r));
 
             return events;

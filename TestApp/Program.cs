@@ -16,23 +16,17 @@ namespace TestApp
             e.Save();
             Console.WriteLine($"Done, new id = {e.Id}");
 
-            WriteEventCountsToConsole();
+            Console.WriteLine($"Fetching events = {Event.FetchEvents().Count} event(s)");
 
             Console.WriteLine("Creating new event in the future...");
             e = new Event("Some event", DateTime.Today.AddDays(7), DateTime.Today.AddDays(8));
             e.Save();
             Console.WriteLine($"Done, new id = {e.Id}");
 
-            WriteEventCountsToConsole();
+            Console.WriteLine($"Fetching events = {Event.FetchEvents().Count} event(s)");
 
             Console.WriteLine("Press enter to exit");
             string s = Console.ReadLine();
-        }
-
-        private static void WriteEventCountsToConsole()
-        {
-            Console.WriteLine($"Fetching all events = {Event.FetchEvents(false).Count} event(s)");
-            Console.WriteLine($"Fetching oustanding events = {Event.FetchEvents().Count} event(s)");
         }
     }
 }

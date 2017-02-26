@@ -47,10 +47,9 @@ namespace BusinessLayer.Data
             return dt;
         }
 
-        public static DataTable EventList(bool outstandingOnly)
+        public static DataTable EventList()
         {
-            string sqlQuery = outstandingOnly ? "SELECT * FROM [Event] WHERE EventStart >= GETDATE() ORDER BY EventStart" : "SELECT * FROM [Event] ORDER BY EventStart";
-            SqlCommand cmd = new SqlCommand(sqlQuery, GetConnection());
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [Event] ORDER BY EventStart", GetConnection());
             SqlDataAdapter adpt = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
 

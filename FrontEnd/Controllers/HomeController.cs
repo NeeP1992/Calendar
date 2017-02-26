@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BusinessLayer;
+using FrontEnd.Models;
 
 namespace FrontEnd.Controllers
 {
@@ -12,6 +14,11 @@ namespace FrontEnd.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public JsonResult FetchEvents()
+        {
+            return Json(EventModel.FromEventList(Event.FetchEvents()), JsonRequestBehavior.AllowGet);
         }
     }
 }
