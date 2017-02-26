@@ -11,6 +11,7 @@
     <script src="/js/jquery.min.js"></script>
     <script src="/js/fullcalendar.min.js"></script>
     <script src="/js/event_calendar.js"></script>
+    <script src="/js/datetime.format.js"></script>
 
     <script type="text/javascript">
 
@@ -32,12 +33,12 @@
                             listWeek: { buttonText: 'list week' }
                         },
 
-                        defaultView: 'listWeek',
-                        defaultDate: '2017-02-12',
+                        defaultView: 'listDay',
                         navLinks: true, // can click day/week names to navigate views
                         editable: true,
                         eventLimit: true, // allow "more" link when too many events
-                        events: '/home/fetchevents'
+                        events: '/home/fetchevents',
+                        eventClick: RenderEvent
                     });
             });
 
@@ -55,8 +56,54 @@
             max-width: 900px;
             margin: 0 auto;
         }
+
+        .success { color: green; }
+
+        .error { color: red; }
+
     </style>
 
 }
 
 <div id="calendar"></div>
+
+<div id="eventDetail">
+    <h2 id="event_heading">Create Event</h2>
+    <div style="display: none" id="event_validation">
+        <!-- Validation message displayed here if the event isn't valid -->
+    </div>
+    <table>
+        <tr style="display: none;" id="tr_id">
+            <td>Id</td>
+            <td id="event_id"></td>
+        </tr>
+        <tr>
+            <td>Start</td>
+            <td>
+                <input id="event_start" name="start" value="@DateTime.Now.AddMinutes(15).ToString("yyyy-MM-dd HH:mm:00")"/>
+            </td>
+        </tr>
+        <tr>
+            <td>End</td>
+            <td>
+                <input id="event_end" name="end" value="@DateTime.Now.AddMinutes(75).ToString("yyyy-MM-dd HH:mm:00")"/>
+            </td>
+        </tr>
+        <tr>
+            <td>Description</td>
+            <td>
+                <input id="event_title" name="title" value="@(Model == null ? string.Empty : Model.title)"/>
+            </td>
+        </tr>
+        <tr id="tr_delete" style="display: none;">
+            <td>
+                <input type="button" id="event_delete" onclick="DeleteEvent();" value="Delete Event"/>
+            </td>
+        </tr>
+        <tr id="tr_savenew">
+            <td colspan="2">
+                <input type="button" onclick="CreateEvent()" value="Save New Event"/>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -63,5 +63,15 @@ namespace BusinessLayer.Data
 
             return dt;
         }
+
+        public static void EventDelete(int id)
+        {
+            SqlCommand cmd = new SqlCommand("DELETE FROM [Event] WHERE Id = @Id", GetConnection());
+            cmd.Parameters.AddWithValue("Id", id);
+            cmd.Connection.Open();
+            cmd.ExecuteNonQuery();
+            cmd.Connection.Close();
+            cmd.Connection.Dispose();
+        }
     }
 }

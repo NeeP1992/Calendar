@@ -16,9 +16,22 @@ namespace FrontEnd.Controllers
             return View();
         }
 
+        public ActionResult Delete(int id)
+        {
+            Event.Delete(id);
+            return RedirectToAction("Index");
+        }
+
         public JsonResult FetchEvents(DateTime start, DateTime end)
         {
             return Json(EventModel.FromEventList(Event.FetchEvents(start, end)), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult AddEvent(EventModel newEvent)
+        {
+            if (newEvent.Validate().Item1)
+                (new Event(newEvent.title, newEvent.start, newEvent.end)).Save();
+            return Json(newEvent.Validate());
         }
     }
 }

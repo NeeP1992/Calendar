@@ -54,5 +54,10 @@ namespace BusinessLayer
 
             return events;
         }
+
+        public static void Delete(int id)
+        {
+            StoredProcedures.EventDelete(id);
+        }
     }
 }
