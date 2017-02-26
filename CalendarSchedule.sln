@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CalendarSchedule", "CalendarSchedule\CalendarSchedule.csproj", "{0BF1E6B8-727E-44F9-8497-EDBED13D5E85}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLayer", "BusinessLayer\BusinessLayer.csproj", "{A08ECB32-2E3E-442E-9ED7-DE700EDD8546}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestApp", "TestApp\TestApp.csproj", "{DC35DA56-47C6-413B-937D-81A5CB5FAD81}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "CalendarDatabase", "CalendarDatabase\CalendarDatabase.sqlproj", "{BFE5D199-A24E-4AFC-8E09-18398944D5AF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0BF1E6B8-727E-44F9-8497-EDBED13D5E85}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0BF1E6B8-727E-44F9-8497-EDBED13D5E85}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0BF1E6B8-727E-44F9-8497-EDBED13D5E85}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0BF1E6B8-727E-44F9-8497-EDBED13D5E85}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A08ECB32-2E3E-442E-9ED7-DE700EDD8546}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A08ECB32-2E3E-442E-9ED7-DE700EDD8546}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A08ECB32-2E3E-442E-9ED7-DE700EDD8546}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +23,12 @@ Global
 		{DC35DA56-47C6-413B-937D-81A5CB5FAD81}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DC35DA56-47C6-413B-937D-81A5CB5FAD81}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DC35DA56-47C6-413B-937D-81A5CB5FAD81}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFE5D199-A24E-4AFC-8E09-18398944D5AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFE5D199-A24E-4AFC-8E09-18398944D5AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFE5D199-A24E-4AFC-8E09-18398944D5AF}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BFE5D199-A24E-4AFC-8E09-18398944D5AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFE5D199-A24E-4AFC-8E09-18398944D5AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFE5D199-A24E-4AFC-8E09-18398944D5AF}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
