@@ -45,11 +45,11 @@ namespace BusinessLayer
             return dt?.Rows.Count > 0 ? new Event(dt.Rows[0]) : null;
         }
 
-        public static List<Event> FetchEvents()
+        public static List<Event> FetchEvents(DateTime start, DateTime end)
         {
             List<Event> events = new List<Event>();
 
-            foreach (DataRow r in StoredProcedures.EventList().Rows)
+            foreach (DataRow r in StoredProcedures.EventList(start, end).Rows)
                 events.Add(new Event(r));
 
             return events;

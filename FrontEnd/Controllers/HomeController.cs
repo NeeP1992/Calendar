@@ -16,9 +16,9 @@ namespace FrontEnd.Controllers
             return View();
         }
 
-        public JsonResult FetchEvents()
+        public JsonResult FetchEvents(DateTime start, DateTime end)
         {
-            return Json(EventModel.FromEventList(Event.FetchEvents()), JsonRequestBehavior.AllowGet);
+            return Json(EventModel.FromEventList(Event.FetchEvents(start, end)), JsonRequestBehavior.AllowGet);
         }
     }
 }

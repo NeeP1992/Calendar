@@ -47,12 +47,14 @@ namespace BusinessLayer.Data
             return dt;
         }
 
-        public static DataTable EventList()
+        public static DataTable EventList(DateTime start, DateTime end)
         {
-            SqlCommand cmd = new SqlCommand("SELECT * FROM [Event] ORDER BY EventStart", GetConnection());
+            SqlCommand cmd = new SqlCommand("SELECT * FROM [Event] WHERE EventStart >= @Start AND EventEnd <= @End ORDER BY EventStart", GetConnection());
             SqlDataAdapter adpt = new SqlDataAdapter(cmd);
             DataTable dt = new DataTable();
 
+            cmd.Parameters.AddWithValue("Start", start);
+            cmd.Parameters.AddWithValue("End", end);
             cmd.Connection.Open();
             adpt.Fill(dt);
             cmd.Connection.Close();
